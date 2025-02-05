@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Google Maps with Images</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 20px;
+    }
+    input[type="text"] {
+      width: 300px;
+      padding: 10px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+    #map-container, #images-container {
+      margin-top: 20px;
+    }
+    iframe {
+      margin-top: 20px;
+      border: 1px solid #ccc;
+    }
+    img {
+      width: 300px;
+      height: 200px;
+      margin: 10px;
+      object-fit: cover;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Dynamic Google Maps with Images</h1>
+  <p>Enter a location to see it on Google Maps and fetch images:</p>
+  <input type="text" id="location-input" placeholder="Enter location (e.g., Eiffel Tower, Paris)" />
+  <button onclick="updateLocation()">Show on Map</button>
+
+  <div id="map-container">
+    <iframe
+      id="google-map"
+      width="600"
+      height="450"
+      style="border:0"
+      loading="lazy"
+      allowfullscreen
+      referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyATMwI2QAdAmthmOGkjAcMb_aQCipd--PU&q=Space+Needle,Seattle+WA">
+    </iframe>
+  </div>
+
+  <div id="images-container">
+    <h2>Images of the Location:</h2>
+    <div id="location-images"></div>
+  </div>
+
+  <script>
+    async function updateLocation() {
+      const locationInput = document.getElementById('location-input').value;
+      const mapIframe = document.getElementById('google-map');
+      const imagesContainer = document.getElementById('location-images');
+
+      if (locationInput.trim() === '') {
+        alert('Please enter a location name.');
+        return;
+      }
+
+      const apiKey = 'AIzaSyATMwI2QAdAmthmOGkjAcMb_aQCipd--PU';
+      const encodedLocation = encodeURIComponent(locationInput);
+
+      // Update the Google Map iframe
+      mapIframe.src = `https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${encodedLocation}`;
+
+      // Fetch place images using the Google Places API
+      const placesApiUrl = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=${apiKey}&input=${encodedLocation}&inputtype=textquery&fields=photos`;
+
+      try {
+        const response = await fetch(placesApiUrl);
+        const data = await response.json();
+
+        // Clear previous images
+        imagesContainer.innerHTML = '';
+
+        if (data.candidates && data.candidates[0]?.photos) {
+          const photos = data.candidates[0].photos;
+
+          photos.forEach((photo, index) => {
+            if (index < 3) { // Limit to 3 images
+              const photoReference = photo.photo_reference;
+              const photoUrl = `https://maps.googleapis.com/maps/api/place/photo?key=${apiKey}&photoreference=${photoReference}&maxwidth=400`;
+
+              const img = document.createElement('img');
+              img.src = photoUrl;
+              img.alt = `Image of ${locationInput}`;
+              imagesContainer.appendChild(img);
+            }
+          });
+        } else {
+          imagesContainer.innerHTML = '<p>No images available for this location.</p>';
+        }
+      } catch (error) {
+        console.error('Error fetching images:', error);
+        imagesContainer.innerHTML = '<p>Failed to fetch images. Please try again later.</p>';
+      }
+    }
+  </script>
+</body>
+</html>

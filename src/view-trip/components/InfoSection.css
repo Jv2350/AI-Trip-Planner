@@ -1,0 +1,102 @@
+/* Apply gradient background color to the whole page */
+body {
+    background: linear-gradient(135deg, #65abf0, #a6e3e9); /* Gradient from light blue to aqua */
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Container styling */
+.info-section-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff; /* White background for the card */
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Effect */
+.info-section-container:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Image Styling */
+.info-section-container img {
+    width: 100%;
+    height: 330px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+/* Trip Details Section */
+.trip-details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+/* Heading Styling */
+.trip-details h2, 
+.content-wrapper h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    background-color: #e0e7ff; /* Light indigo background */
+    border-radius: 20px;
+    padding: 8px 16px;
+    text-align: center;
+}
+
+/* Trip Info Styling */
+.trip-info {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.trip-info h2 {
+    background-color: #e0e0e0;
+    padding: 8px 16px;
+    border-radius: 50px;
+    color: #555;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+/* Content Wrapper */
+.content-wrapper {
+    margin-top: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .info-section-container {
+        padding: 10px;
+        margin: 10px;
+    }
+
+    .trip-details h2, 
+    .content-wrapper h2 {
+        font-size: 20px;
+    }
+
+    .trip-info h2 {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+}
+
+@media (max-width: 600px) {
+    .content-wrapper h2 {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+}

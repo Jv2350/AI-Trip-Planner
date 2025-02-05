@@ -1,0 +1,946 @@
+/* Header Container */
+.header {
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  color: black;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* Left section containing logo and navigation */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 2rem; /* space between logo and navigation */
+}
+
+.logo {
+  height: 3rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
+/* Navigation */
+/* .nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 700;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.nav-item svg {
+  margin-left: 16px; 
+  font-size: 1.5rem;
+}
+
+
+.nav-item:hover {
+  color: #3b82f6;
+} */
+ /* Navigation Container */
+.nav-links {
+  display: flex;
+  gap: 2rem; /* Increased space for a cleaner look */
+  align-items: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.nav-links:hover {
+  transform: scale(1.05); /* Subtle scale effect when hovering over the entire nav */
+}
+
+/* Individual Navigation Items */
+.nav-item {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  position: relative; /* for pseudo-element positioning */
+  padding: 8px 0; /* Add padding for spacing around text */
+  transition: color 0.3s ease, transform 0.3s ease;
+  overflow: hidden; /* Ensure pseudo-elements do not overflow */
+}
+
+/* Icon inside the navigation items */
+.nav-item svg {
+  margin-left: 12px; /* Adjust the space between text and icon */
+  font-size: 1.7rem; /* Icon size increased for emphasis */
+  transition: transform 0.3s ease; /* Smooth transition on hover */
+}
+
+/* On hover effect for icon scaling */
+.nav-item:hover svg {
+  transform: scale(1.2); /* Icon grows slightly when hovering over nav item */
+}
+
+/* Hover Effect for Text and Color */
+.nav-item:hover {
+  color: #3b82f6; /* Change color on hover */
+  transform: translateX(5px); /* Text shifts to the right on hover */
+}
+
+/* Adding a decorative line below each nav item on hover */
+.nav-item::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 3px;
+  background-color: #3b82f6;
+  transition: width 0.3s ease; /* Smooth transition for line animation */
+}
+
+/* Line Animation when hovering */
+.nav-item:hover::after {
+  width: 100%; /* Line fills when hovering */
+}
+
+/* Adding a subtle shadow effect */
+.nav-item:hover {
+  text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2); /* Adds a soft glow */
+}
+
+
+/* Right section: greeting, buttons, avatar, and theme toggle */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem; /* space between elements */
+}
+
+/* Navigation Buttons */
+.nav-buttons {
+  display: flex;
+  gap: 1rem; /* space between "Create Trip" and "My Trips" buttons */
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 9999px;
+  font-weight: 500;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #3b82f6;
+  color: white;
+}
+
+/* Avatar */
+.user-avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: #9b59b6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 9999px;
+  transition: background 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Mode Styling */
+.dark-mode {
+  background-color: #1a202c;
+  color: white;
+}
+
+@keyframes flyAirplane {
+  0% {
+    transform: translateX(-200px) translateY(-200px); /* Start from top-left */
+  }
+  25% {
+    transform: translateX(100vw) translateY(0); /* Move to the right */
+  }
+  50% {
+    transform: translateX(100vw) translateY(100vh); /* Move to bottom-right */
+  }
+  75% {
+    transform: translateX(0) translateY(100vh); /* Move to bottom-left */
+  }
+  100% {
+    transform: translateX(-200px) translateY(0); /* Return to top-left */
+  }
+}
+
+.animate-flyAirplane {
+  position: absolute;
+  animation: flyAirplane 15s linear infinite; /* Continuous movement */
+  z-index: 10; /* Ensure it's above other elements */
+  width: 900px; /* Increase the width to make the airplane larger */
+  height: 900px; /* Increase the height to make the airplane larger */
+}
+/* About.css */
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* About Page Styles */
+.about-page {
+  width: 100%;
+  overflow: hidden;
+}
+
+.about-header {
+  text-align: center;
+  background: #2c3e50;
+  color: white;
+  padding: 50px 0;
+  animation: fadeIn 1s ease-out;
+}
+
+.about-header h1 {
+  font-size: 3em;
+  margin-bottom: 10px;
+}
+
+.about-header p {
+  font-size: 1.2em;
+  margin-top: 0;
+}
+
+/* Our Mission Section Styles */
+.about-mission {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #3498db, #e74c3c); /* Gradient background */
+  color: white;
+  padding: 80px 40px;
+  height: 500px;
+  overflow: hidden;
+  animation: fadeIn 1.5s ease-out; /* Fade-in effect */
+}
+
+.mission-title {
+  font-size: 3em;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Shadow for text */
+  margin-bottom: 20px;
+}
+
+.mission-text {
+  font-size: 1.8em;
+  line-height: 1.5;
+  font-weight: 400;
+  max-width: 60%;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Shadow for text */
+}
+
+.mission-img {
+  position: absolute;
+  right: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 45%;
+  border-radius: 15px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.mission-img:hover {
+  opacity: 1;
+}
+
+.about-features {
+  padding: 50px 20px;
+  text-align: center;
+  background: #3498db;
+  color: white;
+}
+
+.about-features h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  animation: fadeInUp 1s ease-out;
+}
+
+.features-list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.feature-card {
+  width: 100%;
+  max-width: 350px;
+  position: relative;
+}
+
+.feature-img-container {
+  position: relative;
+}
+
+.feature-img {
+  width: 100%;
+  border-radius: 15px;
+  height: 250px;
+  object-fit: cover;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.feature-img:hover {
+  transform: scale(1.1);
+}
+
+.feature-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.feature-overlay h3 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+}
+
+.feature-overlay p {
+  font-size: 1em;
+}
+
+.feature-img-container:hover .feature-overlay {
+  opacity: 1;
+}
+
+/* Meet Our Team Section */
+.about-team {
+  background-color: #f4f4f9;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.about-team h2 {
+  font-size: 2.5em;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+/* Flexbox container for team members */
+.team-list {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;  /* Allow wrapping on smaller screens */
+}
+
+/* Individual team member card styling */
+.team-member {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 250px;  /* Fixed width for consistency */
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect for team members */
+.team-member:hover {
+  transform: translateY(-10px);  /* Lift the card up */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);  /* Enhance shadow on hover */
+}
+
+/* Image styling */
+.team-img {
+  width: 200px;  /* Ensure the images are of equal size */
+  height: 200px;
+  object-fit: cover;  /* Make sure the images fit inside the circle */
+  border-radius: 50%;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+/* Scaling effect for image on hover */
+.team-member:hover .team-img {
+  transform: scale(1.1);  /* Slightly enlarge the image on hover */
+}
+
+/* Text styling for team members */
+.team-member h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.team-member p {
+  font-size: 1.1em;
+  color: #555;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Contact CSS */
+/* Contact Page Styles */
+.contact-page {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #3498db, #2c3e50);
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Header Section */
+.contact-header {
+  text-align: center;
+  margin-bottom: 40px;
+  animation: fadeInDown 1s ease-out;
+}
+
+.contact-header h1 {
+  font-size: 3em;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.contact-header p {
+  font-size: 1.2em;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Contact Form Section */
+.contact-form {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 600px;
+  animation: slideIn 1.2s ease-out;
+}
+
+.contact-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2em;
+  color: #fff;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1em;
+  background: rgba(255, 255, 255, 0.8);
+  color: #2c3e50;
+  outline: none;
+  transition: box-shadow 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  box-shadow: 0 0 10px rgba(52, 152, 219, 0.8);
+}
+
+.contact-form textarea {
+  height: 150px;
+  resize: none;
+}
+
+.contact-form button {
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  background: #e74c3c;
+  color: white;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.contact-form button:hover {
+  background: #c0392b;
+}
+
+/* Contact Info Section */
+.contact-info {
+  margin-top: 40px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.contact-info h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.contact-info p {
+  font-size: 1.1em;
+  margin: 5px 0;
+}
+
+/* Footer Section */
+.contact-footer {
+  margin-top: 50px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.contact-footer p {
+  font-size: 0.9em;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.airplane {
+  position: absolute;
+  top: 50%; /* Start at the middle of the viewport */
+  left: 50%; /* Start at the middle of the viewport */
+  width: 400px; /* Increase the size */
+  height: 400px; /* Increase the size */
+  background: url('aeroplane.png') no-repeat center center / contain;
+  animation: flyAround 18s linear infinite; /* Continuous movement */
+  z-index: 10; /* Ensure it's above other elements */
+}
+
+@keyframes flyAround {
+  0% {
+    transform: translate(-50%, -50%) translate(0, 0); /* Start at center */
+  }
+  10% {
+    transform: translate(-50%, -50%) translate(50vw, 0); /* Move right */
+  }
+  20% {
+    transform: translate(-50%, -50%) translate(50vw, 50vh); /* Move bottom-right */
+  }
+  30% {
+    transform: translate(-50%, -50%) translate(0, 50vh); /* Move bottom-center */
+  }
+  40% {
+    transform: translate(-50%, -50%) translate(-50vw, 50vh); /* Move bottom-left */
+  }
+  50% {
+    transform: translate(-50%, -50%) translate(-50vw, 0); /* Move left */
+  }
+  60% {
+    transform: translate(-50%, -50%) translate(-50vw, -50vh); /* Move top-left */
+  }
+  70% {
+    transform: translate(-50%, -50%) translate(0, -50vh); /* Move top-center */
+  }
+  80% {
+    transform: translate(-50%, -50%) translate(50vw, -50vh); /* Move top-right */
+  }
+  90% {
+    transform: translate(-50%, -50%) translate(50vw, 0); /* Move right */
+  }
+  100% {
+    transform: translate(-50%, -50%) translate(0, 0); /* Return to center */
+  }
+}
+
+
+/*  */
+/* .create-trip-page {
+
+  background: linear-gradient(135deg, #f1f1f1, #d0e6f7);
+
+} */
+ /* Basic styling for the header */
+ /* Hide greeting on small screens */
+@media (max-width: 768px) {
+  .greeting {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .greeting {
+    display: block;
+  }
+}
+
+/* Close Icon (X) for the Popup Menu */
+.nav-links .close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+  display: none; /* Initially hidden */
+}
+
+/* General Header Styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #fff;
+  position: relative;
+}
+
+/* Mobile View (Hamburger Menu) */
+.hamburger-icon {
+  display: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+  font-size: 1.2rem;
+  padding: 10px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.nav-item:hover {
+  background-color: #f0f0f0;
+}
+
+.nav-item svg {
+  margin-right: 8px;
+}
+
+/* For Smaller Screens */
+@media (max-width: 768px) {
+  .hamburger-icon {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    position: fixed; /* To make the menu pop up over the content */
+    top: 0;
+    right: 0;
+    background-color: #fff;
+    width: 250px;
+    height: 100vh; /* Full screen height */
+    padding: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    flex-direction: column;
+    gap: 1rem;
+    transition: transform 0.3s ease-in-out; /* Smooth transition for appearance */
+    transform: translateX(100%); /* Initially hidden off-screen */
+    z-index: 1000; /* Make sure the menu appears in front */
+  }
+
+  .nav-links.open {
+    display: flex;
+    transform: translateX(0); /* Slide the menu in */
+  }
+
+  /* Show Close Icon when Menu is Open */
+  .nav-links.open .close-icon {
+    display: block; /* Show close icon */
+  }
+
+  .nav-item {
+    font-size: 1.2rem;
+    padding: 12px;
+    border-radius: 10px;
+  }
+
+  /* Style buttons */
+  .nav-item .btn {
+    width: 100%;
+    text-align: left;
+    padding: 12px;
+    background-color: #4caf50;
+    color: white;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .nav-item .btn:hover {
+    background-color: #45a049;
+  }
+}
+
+/* Dark Mode */
+.dark-mode {
+  background-color: #333;
+  color: white;
+}
+
+.theme-toggle {
+  cursor: pointer;
+}
+
+.icon {
+  font-size: 1.5rem;
+  color: inherit;
+}
+
+
+/* InfoSection */
+/* Info Section Container */
+.info-section {
+  background: linear-gradient(135deg, #A0D8E3, #F1E1C6); /* Light Blue to Soft Yellow gradient */
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  font-family: 'Helvetica', sans-serif;
+}
+
+/* Image Styling */
+.info-section img {
+  width: 100%;
+  height: 330px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+/* Header and Location Name */
+.info-section .location-name {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* Info Group */
+.info-section .info-group {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+/* Individual Info Items */
+.info-section .info-item {
+  background-color: #ffffff;
+  color: #555;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 500;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.info-section .info-item:hover {
+  background-color: #4CAF50; /* Green for hover effect */
+  color: #fff;
+  border-color: #388E3C;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Icon styling inside info items */
+.info-section .info-item span {
+  margin-right: 10px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .info-section .info-group {
+    flex-direction: column;
+  }
+
+  .info-section .location-name {
+    font-size: 1.8rem;
+  }
+
+  .info-section .info-item {
+    font-size: 0.95rem;
+  }
+}
+
+
+/* CSS for the InfoSection component */
+.info-section-container {
+  background-color: #f9f9f9;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 20px;
+  margin: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-section-container:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.info-section-container img {
+  width: 100%;
+  height: 330px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.trip-details {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 15px;
+  background-color: white;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+
+.trip-details h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.trip-info {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.trip-info h2 {
+  background-color: #e0e0e0;
+  padding: 8px 16px;
+  border-radius: 50px;
+  color: #555;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .info-section-container {
+    padding: 10px;
+    margin: 10px;
+  }
+
+  .trip-details h2 {
+    font-size: 20px;
+  }
+
+  .trip-info h2 {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+}
+
+
+
