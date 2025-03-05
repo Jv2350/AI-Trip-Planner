@@ -1,0 +1,1 @@
+(this.$WP=this.$WP||[]).push(["h2v4d7",(s,a)=>{var i,r,d=()=>i("div",{className:"rUioF _Z Xc f u j",children:i(r,{variant:"xsmall"})});return[()=>{s("default",d)},[s=>i=s.jsx,s=>r=s.Spinner]]},["21h32l","qndsds"]]);

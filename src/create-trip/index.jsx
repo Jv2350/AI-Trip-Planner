@@ -506,9 +506,9 @@ function CreateTrip() {
     });
   };
 
-  useEffect(() => {
-    console.log(formData);
-  }, [formData]);
+  // useEffect(() => {
+  //   console.log(formData);
+  // }, [formData]);
 
   const login = useGoogleLogin({
     onSuccess: (codeResp) => GetUserProfile(codeResp),
@@ -521,9 +521,9 @@ function CreateTrip() {
       setOpenDialog(true);
       return;
     }
-    console.log("Form Data: ", formData);
+    // console.log("Form Data: ", formData);
     if (
-      formData?.totalDays > 5 ||
+      formData?.totalDays > 30 ||
       !formData?.location ||
       !formData?.budget ||
       !formData?.traveler
@@ -695,4 +695,4 @@ function CreateTrip() {
   );
 }
 
-export default CreateTrip; 
+export default CreateTrip;
